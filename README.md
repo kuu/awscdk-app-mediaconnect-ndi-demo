@@ -21,7 +21,7 @@ $ git clone https://github.com/kuu/awscdk-app-mediaconnect-ndi-demo.git
 $ cd awscdk-app-mediaconnect-ndi-demo
 $ npm install
 ```
-3. Modify `/lib/awscdk-app-mediaconnect-ndi-demo-stack.ts` if necessary, e.g. for changing the source file, adding outputs to the flow, etc.
+3. Modify `./lib/awscdk-app-mediaconnect-ndi-demo-stack.ts` if necessary, e.g. for changing the source file, adding outputs to the flow, etc.
 
 ## Deploy
 ```
