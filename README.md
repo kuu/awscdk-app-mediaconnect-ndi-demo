@@ -28,6 +28,7 @@ $ npx cdk deploy
 ```
 * Even if the deployment looked finished, you may not be able to login the Windows instance until the NVIDIA driver is installed and the system rebooted.
 * Once you can log in the windows instance via RDP, please download/install the NDI Tools from https://ndi.video/tools/
+* When the deployment finished, MediaLive and MediaConnect should already be up and running. Please obtain the NDI Discovery Server's IP address from the MediaConnect console and configure the NDI Tools' Access Manager with the IP address so you should be able to recieve the NDI stream using NDI Tools' Studio Monitor.
 
 ### Resources
 The following resources will be deployed:
