@@ -26,6 +26,8 @@ $ npm install
 ```
 $ npx cdk deploy
 ```
+* Even if the deployment looked finished, you may not be able to login the Windows instance until the NVIDIA driver is installed and the system rebooted.
+* Once you can log in the windows instance via RDP, please download/install the NDI Tools from https://ndi.video/tools/
 
 ### Resources
 The following resources will be deployed:
