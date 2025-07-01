@@ -41,7 +41,6 @@ export class AwscdkAppMediaconnectNdiDemoStack extends cdk.Stack {
         name: 'lcp-demo-ndi-output',
         protocol: 'ndi-speed-hq',
         ndiSpeedHqQuality: 100,
-        // destination: instance.instancePrivateIp,
       });
       output.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
     }
@@ -86,8 +85,7 @@ function createNdiReceiverHost(scope: Construct, vpc: ec2.IVpc): ec2.Instance {
   });
   sg.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
   sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(3389), 'Allow RDP connections');
-  sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.udpRange(5960, 5969), 'Allow NDI discovery traffic');
-  sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(5961), 'Allow NDI TCP traffic');
+  sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcpRange(5959, 65535), 'Allow NDI traffic');
   
   // Create IAM role for the instance
   const instanceRole = new iam.Role(scope, 'G4dnInstanceRole', {
