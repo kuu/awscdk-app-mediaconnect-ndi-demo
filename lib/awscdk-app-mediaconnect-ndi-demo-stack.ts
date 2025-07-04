@@ -12,7 +12,14 @@ export class AwscdkAppMediaconnectNdiDemoStack extends cdk.Stack {
     const {flow, vpc} = new LiveFeedFromFile(this, 'LiveFeed', {
       file: {
         type: 'MP4_FILE',
-        url: 'https://blackout-test.s3.ap-northeast-1.amazonaws.com/Gameday-1080p5994.mp4',
+        url: 's3://my-bucket/path/to/video.mp4', // Replace with your S3 bucket and file path
+      },
+      encoderSpec: {
+        framerateNumerator: 30000,
+        framerateDenominator: 1001,
+        scanType: 'INTERLACED',
+        width: 1280,
+        height: 720,
       },
       source: {
         protocol: 'SRT',
