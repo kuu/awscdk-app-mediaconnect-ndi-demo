@@ -3,12 +3,12 @@
 AWS CDK app for setting up MediaConnect NDI output demo
 
 ## Summary
-* The demo shows a file in an S3 bucket being converted into an NDI stream
+* The demo shows MediaConnect NDI output using a S3 file as a source
 * A new VPC is created; all the resouces are located in the VPC
-* MediaLive is used to convert the S3 file into an SRT stream
+* MediaLive is used to convert the S3 file into SRT stream
 * The SRT stream is converted into an [NDI output](https://docs.aws.amazon.com/mediaconnect/latest/ug/outputs-using-ndi.html) by MediaConnect
-* 2x EC2 instances are deployed; one for NDI Discovery (Amazon Linux 2023 on t3.micro), the other for the preview of NDI stream (Windows Server 2022 on G4dn.xlarge)
-* [NDI Tools](https://ndi.video/tools/) are installed for the preview via RDP
+* 2x EC2 instances are deployed; one for NDI Discovery (Amazon Linux 2023 on t3.micro), the other for the preview of NDI stream (Windows Server 2022 on G4dn.xlarge) via RDP
+* To preview/capture the NDI stream, [NDI Tools](https://ndi.video/tools/) need to be installed on the Windows Server EC2 instance separately
 
 ![diagram.png](./diagram.png)
 
