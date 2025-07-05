@@ -9,12 +9,12 @@ export class AwscdkAppMediaconnectNdiDemoStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const {flow, vpc} = new LiveFeedFromFile(this, 'LiveFeed', {
+    const {flow, vpc, ndiDiscoveryServer} = new LiveFeedFromFile(this, 'LiveFeed', {
       file: {
-        type: 'MP4_FILE',
-        url: 's3://my-bucket/path/to/video.mp4', // Replace with your S3 bucket and file path
+        type: 'MP4_FILE', // MP4 or TS
+        url: 'https://www.acrovid.com/downloads/videos/demo1_60p_converted_to_30p.mp4', // Replace with your S3 or Web URL
       },
-      encoderSpec: {
+      encoderSpec: { // optional: Default is 1080p@30
         framerateNumerator: 30000,
         framerateDenominator: 1001,
         scanType: 'INTERLACED',
@@ -58,6 +58,15 @@ export class AwscdkAppMediaconnectNdiDemoStack extends cdk.Stack {
       exportName: cdk.Aws.STACK_NAME + "MediaConnectFlow",
       description: "MediaConnect Flow ARN",
     });
+
+    if (ndiDiscoveryServer) {
+      // Output the NDI Discovery Server IP address
+      new cdk.CfnOutput(this, "NDIDiscoveryServer", {
+        value: ndiDiscoveryServer.instancePrivateIp,
+        exportName: cdk.Aws.STACK_NAME + "NDIDiscoveryServer",
+        description: "NDI Discovery Server IP address",
+      });
+    }
   }
 }
 
